@@ -68,13 +68,13 @@ export async function getSingleDailyCheckupResult(req, res) {
 
 export async function getAllDailyCheckupResultsForUser(req, res) {
   try {
-    const params = [req.params.id];
-    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const params = [req.params.userId];
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where user_id = ?`);
     const row = stmnt.get(params);
     const jsonToSend = {
       meta: {
-        name: "Daily checkup result",
-        title: "Specific daily checkup result",
+        name: "Daily checkup results for specific user",
+        title: "All daily checkup results for specific user",
         date: getToday(),
         originalUrl: `${req.originalUrl}`,
       },
@@ -88,7 +88,7 @@ export async function getAllDailyCheckupResultsForUser(req, res) {
 
 export async function getAllDailyCheckupResultsBetweenDates(req, res) {
   try {
-    const params = [req.params.id];
+    const params = [req.params.minDate, req.params.maxDate];
     const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
     const row = stmnt.get(params);
     const jsonToSend = {
@@ -108,7 +108,7 @@ export async function getAllDailyCheckupResultsBetweenDates(req, res) {
 
 export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
   try {
-    const params = [req.params.id];
+    const params = [req.params.userId, req.params.minDate, req.params.maxDate];
     const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
     const row = stmnt.get(params);
     const jsonToSend = {

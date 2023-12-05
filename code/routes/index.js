@@ -34,8 +34,8 @@ router.options('/progress', (req, res, next) => {
 router.get('/dailyCheckupResults', cors(), getAllDailyCheckupResults);
 router.get('/dailyCheckupResults/:id', cors(), getSingleDailyCheckupResult);
 router.get('/user/:userId/dailyCheckupResults', cors(), getAllDailyCheckupResultsForUser);
-router.get('/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDates);
-router.get('/user/:userId/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDatesForUser);
+//router.get('/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDates);
+//router.get('/user/:userId/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDatesForUser);
 //router.post('/questionnaire', cors(), setResults);
 
 export default router;
