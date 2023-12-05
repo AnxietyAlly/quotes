@@ -134,3 +134,9 @@ export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
     console.log(err);
   }
 }
+
+export async function addNewDailyCheckupResult(req, res) {
+  const body = req.body;
+  const stmnt = db.prepare('INSERT INTO dailyCheckupResults (user_id, date, result, description) VALUES (?, ?, ?, ?)');
+  stmnt.run(body.user_id, body.date, body.result, body.description);
+}

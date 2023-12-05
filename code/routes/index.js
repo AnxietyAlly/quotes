@@ -38,4 +38,5 @@ router.get('/user/:userId/dailyCheckupResults', cors(), getAllDailyCheckupResult
 //router.get('/user/:userId/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDatesForUser);
 //router.post('/questionnaire', cors(), setResults);
 
+
 export default router;
