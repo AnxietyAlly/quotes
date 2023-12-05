@@ -70,7 +70,7 @@ export async function getAllDailyCheckupResultsForUser(req, res) {
   try {
     const params = [req.params.userId];
     const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where user_id = ?`);
-    const row = stmnt.get(params);
+    const rows = stmnt.get(params);
     const jsonToSend = {
       meta: {
         name: "Daily checkup results for specific user",
@@ -78,7 +78,10 @@ export async function getAllDailyCheckupResultsForUser(req, res) {
         date: getToday(),
         originalUrl: `${req.originalUrl}`,
       },
-      data: row
+      data: []
+    }
+    for (let i = 0; i < rows.length; i++) {
+      jsonToSend.data.push(`/dailyCheckupResults/${rows[i].id}`)
     }
     res.status(200).json(jsonToSend);
   } catch (err) {
@@ -90,7 +93,7 @@ export async function getAllDailyCheckupResultsBetweenDates(req, res) {
   try {
     const params = [req.params.minDate, req.params.maxDate];
     const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
-    const row = stmnt.get(params);
+    const rows = stmnt.get(params);
     const jsonToSend = {
       meta: {
         name: "Daily checkup result",
@@ -98,7 +101,10 @@ export async function getAllDailyCheckupResultsBetweenDates(req, res) {
         date: getToday(),
         originalUrl: `${req.originalUrl}`,
       },
-      data: row
+      data: []
+    }
+    for (let i = 0; i < rows.length; i++) {
+      jsonToSend.data.push(`/dailyCheckupResults/${rows[i].id}`)
     }
     res.status(200).json(jsonToSend);
   } catch (err) {
@@ -110,7 +116,7 @@ export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
   try {
     const params = [req.params.userId, req.params.minDate, req.params.maxDate];
     const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
-    const row = stmnt.get(params);
+    const rows = stmnt.get(params);
     const jsonToSend = {
       meta: {
         name: "Daily checkup result",
@@ -118,7 +124,10 @@ export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
         date: getToday(),
         originalUrl: `${req.originalUrl}`,
       },
-      data: row
+      data: []
+    }
+    for (let i = 0; i < rows.length; i++) {
+      jsonToSend.data.push(`/dailyCheckupResults/${rows[i].id}`)
     }
     res.status(200).json(jsonToSend);
   } catch (err) {
