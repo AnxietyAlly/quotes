@@ -5,7 +5,8 @@ import {
   getSingleDailyCheckupResult,
   getAllDailyCheckupResultsForUser,
   getAllDailyCheckupResultsBetweenDates,
-  getAllDailyCheckupResultsBetweenDatesForUser
+  getAllDailyCheckupResultsBetweenDatesForUser,
+  addNewDailyCheckupResult
 } from '../controllers/progressController.js';
 const router = express.Router();
 
@@ -36,7 +37,7 @@ router.get('/dailyCheckupResults/:id', cors(), getSingleDailyCheckupResult);
 router.get('/user/:userId/dailyCheckupResults', cors(), getAllDailyCheckupResultsForUser);
 //router.get('/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDates);
 //router.get('/user/:userId/dateRange/:minDate/:maxDate/dailyCheckupResults', cors(), getAllDailyCheckupResultsBetweenDatesForUser);
-//router.post('/questionnaire', cors(), setResults);
+router.post('/dailyCheckupResults', cors(), addNewDailyCheckupResult);
 
 
 export default router;
