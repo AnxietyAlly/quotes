@@ -29,7 +29,7 @@ router.options('/progress', (req, res, next) => {
 
 // get a collection of all the accounts, you can also use a query
 router.get('/dailyCheckupResults', cors(), getAllDailyCheckupResults);
-router.get('/questionnaire/:id', cors(), getSingleDailyCheckupResult);
+router.get('/dailyCheckupResults/:id', cors(), getSingleDailyCheckupResult);
 //router.post('/questionnaire', cors(), setResults);
 
 export default router;
