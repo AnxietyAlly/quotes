@@ -65,3 +65,63 @@ export async function getSingleDailyCheckupResult(req, res) {
     console.log(err);
   }
 }
+
+export async function getAllDailyCheckupResultsForUser(req, res) {
+  try {
+    const params = [req.params.id];
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const row = stmnt.get(params);
+    const jsonToSend = {
+      meta: {
+        name: "Daily checkup result",
+        title: "Specific daily checkup result",
+        date: getToday(),
+        originalUrl: `${req.originalUrl}`,
+      },
+      data: row
+    }
+    res.status(200).json(jsonToSend);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getAllDailyCheckupResultsBetweenDates(req, res) {
+  try {
+    const params = [req.params.id];
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const row = stmnt.get(params);
+    const jsonToSend = {
+      meta: {
+        name: "Daily checkup result",
+        title: "Specific daily checkup result",
+        date: getToday(),
+        originalUrl: `${req.originalUrl}`,
+      },
+      data: row
+    }
+    res.status(200).json(jsonToSend);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
+  try {
+    const params = [req.params.id];
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const row = stmnt.get(params);
+    const jsonToSend = {
+      meta: {
+        name: "Daily checkup result",
+        title: "Specific daily checkup result",
+        date: getToday(),
+        originalUrl: `${req.originalUrl}`,
+      },
+      data: row
+    }
+    res.status(200).json(jsonToSend);
+  } catch (err) {
+    console.log(err);
+  }
+}
