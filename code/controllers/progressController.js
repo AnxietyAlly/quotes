@@ -92,7 +92,7 @@ export async function getAllDailyCheckupResultsForUser(req, res) {
 export async function getAllDailyCheckupResultsBetweenDates(req, res) {
   try {
     const params = [req.params.minDate, req.params.maxDate];
-    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where date >= ? AND date <= ?`);
     const rows = stmnt.all(params);
     const jsonToSend = {
       meta: {
@@ -115,7 +115,7 @@ export async function getAllDailyCheckupResultsBetweenDates(req, res) {
 export async function getAllDailyCheckupResultsBetweenDatesForUser(req, res) {
   try {
     const params = [req.params.userId, req.params.minDate, req.params.maxDate];
-    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where id = ?`);
+    const stmnt = db.prepare(`SELECT * FROM dailyCheckupResults where user_id = ? AND date >= ? AND date <= ?`);
     const rows = stmnt.all(params);
     const jsonToSend = {
       meta: {
