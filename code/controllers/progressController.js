@@ -139,4 +139,7 @@ export async function addNewDailyCheckupResult(req, res) {
   const body = req.body;
   const stmnt = db.prepare('INSERT INTO dailyCheckupResults (user_id, date, result, description) VALUES (?, ?, ?, ?)');
   stmnt.run(body.user_id, body.date, body.result, body.description);
+  res.send(
+    `New row inserted with values user_id (${body.user_id}) and date (${body.date} and date (${body.result} and date (${body.description})`
+  );
 }
