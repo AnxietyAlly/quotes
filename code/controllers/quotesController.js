@@ -26,7 +26,7 @@ const tempResponse = {
 
 export async function getAllQuotes(req, res) {
   try {
-    const stmnt = db.prepare("SELECT * FROM quotes");
+    const stmnt = db.prepare("SELECT * FROM dailyQuotes");
     const rows = stmnt.all();
     const jsonToSend = {
       meta: {
@@ -49,7 +49,7 @@ export async function getAllQuotes(req, res) {
 export async function getSingleQuote(req, res) {
   try {
     const params = [req.params.id];
-    const stmnt = db.prepare(`SELECT * FROM quotes where id = ?`);
+    const stmnt = db.prepare(`SELECT * FROM dailyQuotes where id = ?`);
     const row = stmnt.get(params);
     const jsonToSend = {
       meta: {
